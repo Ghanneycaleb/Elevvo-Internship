@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f6" />
+    <meta
+      name="description"
+      content="A live weather dashboard for the places you care about."
+    />
+    <title>Weather Sight | Live weather dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Weather Sight home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="6" fill="currentColor" />
+              <path
+                d="M18 3v5m0 20v5M3 18h5m20 0h5M7.4 7.4l3.6 3.6m14 14 3.6 3.6m0-21.2L25 11m-14 14-3.6 3.6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2.2"
+              />
+            </svg>
+          </span>
+          <span class="brand__copy">
+            <strong>weather Sight</strong>
+            <span>YOUR LITTLE WINDOW TO THE WORLD</span>
+          </span>
+        </a>
+        <div class="topbar__right">
+          <span class="live-indicator"><i></i> LIVE CONDITIONS</span>
+          <span class="topbar__divider" aria-hidden="true"></span>
+          <span class="topbar__date" id="todayLabel"></span>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark mode"
+            title="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M20.2 15.1A8.6 8.6 0 0 1 8.9 3.8 8.7 8.7 0 1 0 20.2 15.1Z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+              />
+            </svg>
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" />
+              <path
+                d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="1.7"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="page">
+        <section class="page-intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">YOUR WEATHER, AT A GLANCE</p>
+            <h1 id="page-title">A little sun, wherever you are.</h1>
+            <p class="page-intro__copy">
+              Check in on your favorite places and see what the sky has in store.
+            </p>
+          </div>
+          <button class="location-button" id="locationButton" type="button">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"
+                stroke="currentColor"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+              />
+              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+            <span>Use my location</span>
+          </button>
+        </section>
+
+        <div class="dashboard">
+          <aside class="places-panel" aria-label="Weather locations">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">YOUR COLLECTION</p>
+                <h2>Places</h2>
+              </div>
+              <span class="place-count" id="placeCount">0</span>
+            </div>
+
+            <form class="search-form" id="citySearchForm">
+              <label class="visually-hidden" for="citySearch">Search for a city</label>
+              <div class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" />
+                  <path
+                    d="m16 16 4 4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="1.8"
+                  />
+                </svg>
+                <input
+                  id="citySearch"
+                  name="city"
+                  type="search"
+                  placeholder="Search a city..."
+                  autocomplete="off"
+                  maxlength="100"
+                  required
+                />
+                <button class="search-submit" id="searchButton" type="submit" aria-label="Add city">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M12 5v14m-7-7h14"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <p class="form-message" id="searchMessage" role="status" aria-live="polite"></p>
+            <div class="city-list" id="cityList" aria-label="Saved places"></div>
+            <p class="places-empty" id="placesEmpty">
+              Your saved places will appear here. Search for a city to get started.
+            </p>
+            <p class="places-hint">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7.5" stroke="currentColor" />
+                <path d="M10 9v4m0-6h.01" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+              Select a place to see its forecast
+            </p>
+          </aside>
+
+          <section class="weather-panel" aria-label="Selected location weather" aria-live="polite">
+            <div class="weather-content" id="weatherContent"></div>
+          </section>
+        </div>
+
+        <footer class="page-footer">
+          <span>Made for following the forecast.</span>
+          <span>Weather data by OpenWeatherMap</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

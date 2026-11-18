@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+/* Shared colors, fonts, and sizing values used throughout the page. */
+:root {
+  color-scheme: light;
+  --ink: #20231f;
+  --muted: #777c73;
+  --paper: #fbfaf7;
+  --surface: #fff;
+  --line: #e8e6df;
+  --green: #415b46;
+  --green-dark: #304535;
+  --soft-green: #edf1e9;
+  --accent-blue: #3c9dd0;
+  --accent-blue-dark: #17668f;
+  --soft-blue: #eff8fc;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+/* Base styles keep sizing and typography consistent across elements. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* Keyboard users get a clear outline on focused interactive elements. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+/* Header and navigation. */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 250, 247, 0.96);
+}
+
+.header-inner {
+  width: min(1120px, calc(100% - 56px));
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-name {
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.site-name span {
+  color: #a86e43;
+}
+
+.main-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.main-nav a {
+  color: #575c54;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--green-dark);
+}
+
+main {
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+}
+
+/* Introductory heading above the stories. */
+.intro {
+  padding: 88px 0 64px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.intro h1 {
+  margin-bottom: 18px;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.intro-copy {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Blue-tinted surface groups all story browsing controls and results. */
+.journal {
+  padding: 24px;
+  border: 1px solid #e0eef4;
+  border-radius: 12px;
+  background: var(--soft-blue);
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-button,
+.page-button {
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.category-button {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: transparent;
+  color: #676c64;
+  font-size: 0.87rem;
+}
+
+.category-button:hover {
+  background: #e2f2f9;
+  color: var(--ink);
+}
+
+.category-button.is-active {
+  border-color: var(--accent-blue);
+  background: #dff1f9;
+  color: #163f54;
+}
+
+.search-wrap {
+  position: relative;
+  width: min(260px, 100%);
+}
+
+.search-wrap input {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 38px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.88rem;
+}
+
+.search-wrap input::placeholder {
+  color: #999d95;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  color: #72776e;
+  font-size: 1.35rem;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-55%);
+}
+
+/* Story count and responsive card grid. */
+.results-count {
+  min-height: 20px;
+  margin: 18px 0 14px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px 24px;
+}
+
+.post-card {
+  min-width: 0;
+}
+
+.post-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  background: #e8e9e1;
+}
+
+.post-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.post-card:hover .post-image img {
+  transform: scale(1.035);
+}
+
+.image-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #5e665a;
+  font-size: 0.88rem;
+}
+
+/* Individual story details and metadata. */
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 17px 0 9px;
+  color: var(--muted);
+  font-size: 0.73rem;
+}
+
+.post-category {
+  color: var(--accent-blue-dark);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.meta-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #aaa99f;
+}
+
+.post-title {
+  margin-bottom: 9px;
+  font-family: var(--serif);
+  font-size: 1.42rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.post-description {
+  margin-bottom: 0;
+  color: #6d726a;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.empty-state {
+  padding: 56px 16px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Page controls, current-page state, and boundary states. */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 0 16px;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-button {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-color: var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: #555b52;
+  font-size: 0.84rem;
+}
+
+.page-button:hover:not(:disabled) {
+  border-color: var(--accent-blue);
+  background: #e2f2f9;
+  color: #163f54;
+}
+
+.page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.page-button[aria-current="page"] {
+  border-color: var(--accent-blue);
+  background: #dff1f9;
+  color: #163f54;
+}
+
+.page-direction {
+  min-width: 78px;
+}
+
+/* About section and footer. */
+.about {
+  max-width: 640px;
+  margin: 105px auto 92px;
+  padding: 44px 32px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 13px;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.about > p:last-child {
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 23px 0 30px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Keep the tablet layout at two cards per row. */
+@media (max-width: 800px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 20px;
+  }
+
+  .intro {
+    padding: 72px 0 54px;
+  }
+}
+
+/* Stack controls and story cards on narrow mobile screens. */
+@media (max-width: 560px) {
+  .header-inner,
+  main,
+  .site-footer {
+    width: min(100% - 36px, 440px);
+  }
+
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .site-name {
+    font-size: 1.12rem;
+  }
+
+  .main-nav {
+    gap: 19px;
+  }
+
+  .intro {
+    padding: 61px 0 43px;
+  }
+
+  .intro h1 {
+    font-size: clamp(2.7rem, 12vw, 3.7rem);
+  }
+
+  .intro-copy {
+    font-size: 0.92rem;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    gap: 14px;
+  }
+
+  .journal {
+    padding: 16px;
+  }
+
+  .search-wrap {
+    width: 100%;
+  }
+
+  .category-list {
+    gap: 4px;
+  }
+
+  .category-button {
+    padding: 8px 13px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 29px;
+  }
+
+  .post-image {
+    aspect-ratio: 4 / 2.8;
+  }
+
+  .pagination {
+    gap: 6px;
+    padding-top: 36px;
+  }
+
+  .page-direction {
+    min-width: 67px;
+    padding: 8px;
+  }
+
+  .page-numbers {
+    gap: 3px;
+  }
+
+  .page-button {
+    min-width: 35px;
+    min-height: 36px;
+    padding: 7px 9px;
+  }
+
+  .about {
+    margin: 75px auto 65px;
+    padding: 35px 12px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* Respect the operating system's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

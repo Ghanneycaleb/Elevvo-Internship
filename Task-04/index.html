@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page metadata and links to the project's styles and script. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Curious Journal: thoughtful notes on technology, travel, and food.">
+  <title>The Curious Journal — Stories for curious minds</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Site identity and primary navigation. -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-name" href="#home" aria-label="The Curious Journal home">The Curious Journal<span>.</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" aria-current="page">Home</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Introductory heading for the journal. -->
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Notes from a curious life</p>
+      <h1 id="page-title">A little wonder,<br>for your everyday.</h1>
+      <p class="intro-copy">Ideas, places, and plates worth slowing down for.</p>
+    </section>
+
+    <!-- Interactive story listing: category filters, search, results, and pagination. -->
+    <section class="journal" aria-label="Journal articles">
+      <div class="toolbar">
+        <div class="category-list" role="group" aria-label="Filter posts by category">
+          <button class="category-button is-active" type="button" data-category="All" aria-pressed="true">All</button>
+          <button class="category-button" type="button" data-category="Tech" aria-pressed="false">Tech</button>
+          <button class="category-button" type="button" data-category="Travel" aria-pressed="false">Travel</button>
+          <button class="category-button" type="button" data-category="Food" aria-pressed="false">Food</button>
+        </div>
+        <div class="search-wrap">
+          <label class="visually-hidden" for="post-search">Search post titles</label>
+          <input id="post-search" type="search" placeholder="Search stories..." autocomplete="off">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+        </div>
+      </div>
+
+      <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true"></p>
+      <div id="posts-grid" class="posts-grid"></div>
+      <p id="empty-state" class="empty-state" hidden>No stories found. Try another search or category.</p>
+      <nav id="pagination" class="pagination" aria-label="Post pages" hidden>
+        <button id="previous-page" class="page-button page-direction" type="button" aria-label="Go to previous page">Previous</button>
+        <div id="page-numbers" class="page-numbers" aria-label="Choose a page"></div>
+        <button id="next-page" class="page-button page-direction" type="button" aria-label="Go to next page">Next</button>
+      </nav>
+    </section>
+
+    <!-- Short description of the journal, linked from the About navigation item. -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <p class="eyebrow">A note about this journal</p>
+      <h2 id="about-title">Stay curious. Stay awhile.</h2>
+      <p>This is a collection of small discoveries: useful ideas, memorable journeys, and good things to eat. Thanks for reading along.</p>
+    </section>
+  </main>
+
+  <!-- Closing site information. -->
+  <footer class="site-footer">
+    <p>© 2026 The Curious Journal</p>
+    <p>Made for the joy of finding out.</p>
+  </footer>
+</body>
+</html>
