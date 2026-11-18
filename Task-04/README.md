@@ -2,7 +2,7 @@
 
 **Elevvo Internship · Task 04 · Level 2**
 
-A responsive, static journal page built with HTML, CSS, and vanilla JavaScript. It uses fictional sample posts and has no backend.
+A responsive, static blog homepage built with HTML, CSS, and vanilla JavaScript. It uses fictional sample posts and has no backend.
 
 ## Features
 
