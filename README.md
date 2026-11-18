@@ -5,7 +5,7 @@ A collection of frontend projects built during the Elevvo internship. Each task 
 | Task | Level | Project | Technologies | Folder |
 |---|---|---|---|---|
 | 01 | Level 1 | SlideBar — responsive collapsible sidebar | HTML, CSS, JavaScript | [Task-01](./Task-01/) |
-| 04 | Level 2 | The Curious Journal — searchable, filterable journal | HTML, CSS, JavaScript | [Task-04](./Task-04/) |
+| 04 | Level 2 | The Curious Journal — searchable, filterable Blog Homepage | HTML, CSS, JavaScript | [Task-04](./Task-04/) |
 | 06 | Level 3 | StudioDesk — freelance admin dashboard | React, React Router, Tailwind CSS, Recharts | [Task-06](./Task-06/) |
 | 07 | Level 3 | Weather Sight — real-time weather dashboard | HTML, CSS, JavaScript, OpenWeatherMap API | [Task-07](./Task-07/) |
 
